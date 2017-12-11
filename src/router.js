@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { routerRedux,Router,Redirect, Switch, Route } from 'dva/router';
 import dynamic from 'dva/dynamic';
-
 const { ConnectedRouter } = routerRedux
 
 function RouterConfig({ history ,app  }) {
@@ -45,7 +45,13 @@ function RouterConfig({ history ,app  }) {
      
     </ConnectedRouter >
   );
+  	routes.PropTypes={
+		history:PropTypes.object,
+		app:PropTypes.object
+	}
 }
+
+
 
 export default RouterConfig;
 
