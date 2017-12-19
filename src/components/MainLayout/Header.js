@@ -12,9 +12,6 @@ function Header({ location }) {
       <Menu.Item key="/users">
         <Link to="/users"><Icon type="bars" />Users</Link>
       </Menu.Item>
-      <Menu.Item key="/">
-        <Link to="/"><Icon type="home" />Home</Link>
-      </Menu.Item>
       <Menu.Item key="/login">
         <Link to="/login"><Icon type="frown-circle" />login</Link>
       </Menu.Item>

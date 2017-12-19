@@ -92,22 +92,6 @@ function Users({ props,dispatch,list: dataSource, total, page: current,loading }
 		  		})
    }
 
-
-  // function createHandler(userstoekn,values) {
-  // 		dispatch({
-  // 			type:'users/create',
-  // 			payload:{userstoekn,values},
-  // 		})
-  // 		 .then(() => {
-		//     message.success('新增成功');
-		//   })
-  // 		 .catch((reason)=>{
-  // 		 	console.log(reason)
-		//   	message.success(reason);
-
-  // 		 })
-  // }
-
   const columns = [
     {
       title: 'Name',

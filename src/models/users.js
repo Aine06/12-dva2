@@ -56,12 +56,12 @@ export default {
 	       let getuserId = userstoekn.getuserId
 		   let gettoken = userstoekn.gettoken
 		   var success = yield call(usersService.create, values ,getuserId,gettoken);
-		   console.log(success)
 		    if (success) {
 		    	 resolve(success);
 			 } else {
 			     reject('崩溃啦');
 			 }
+
 	       yield put({ type: 'reload' });
     },
     *reload(action, { put, select }) {
@@ -72,7 +72,6 @@ export default {
   },
   subscriptions: {
   	setup({dispatch,history}){
-
   		 return history.listen(({ pathname, search }) => {
 
   		 	const query = queryString.parse(search);

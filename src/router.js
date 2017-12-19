@@ -3,43 +3,44 @@ import PropTypes from 'prop-types'
 import { routerRedux,Router,Redirect, Switch, Route } from 'dva/router';
 import dynamic from 'dva/dynamic';
 const { ConnectedRouter } = routerRedux
+import MainLayout from './components/MainLayout/MainLayout';
+
 
 function RouterConfig({ history ,app  }) {
 
 	const routes =[
-
-		{
-			path:'/index',
-			component:() => import('./routes/IndexPage'),
-		},
 		{
 			path:'/users',
 			models: () => [import('./models/users')],
-			component:() => import('./routes/Users'),
+			component:() => import('./components/Users/Users'),
 		},{
 			path:'/login',
 			models: () => [import('./models/Login')],
-			component:()=> import('./routes/Login'),
+			component:()=> import('./components/Login/Login'),
 
 		}
 	]
+
+
 
   return (
 
     <ConnectedRouter history={history}>
        <Switch>
-	        <Route exact path="/" render={()=>(<Redirect to='/index'/>)} />
-	        {
-	        	routes.map(({path,...dynamics},key)=>(
-	        			<Route key ={key} exact
-	        			path ={path}
-	        			component={dynamic({
-	        				app,
-	        				...dynamics
-	        			})}
-	        			/>
-	        		))
-	        }
+       	<MainLayout>
+		        <Route exact path="/" render={()=>(<Redirect to='/users'/>)} />
+		        {
+		        	routes.map(({path,...dynamics},key)=>(
+		        			<Route key ={key} exact
+		        			path ={path}
+		        			component={dynamic({
+		        				app,
+		        				...dynamics
+		        			})}
+		        			/>
+		        		))
+		        }
+	        </MainLayout>
 	      
        </Switch>
      
@@ -50,8 +51,6 @@ function RouterConfig({ history ,app  }) {
 		app:PropTypes.object
 	}
 }
-
-
 
 export default RouterConfig;
 
